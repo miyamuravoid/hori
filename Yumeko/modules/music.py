@@ -19,7 +19,7 @@ from Yumeko.utils.pastebin import paste
 __mod_name__ = "Media"
 
 
-is_downloading = False
+is_downloading = True
 
 
 def get_file_extension_from_url(url):
@@ -37,9 +37,9 @@ def download_youtube_audio(url: str):
             "quiet": True,
         }
     ) as ydl:
-        info_dict = ydl.extract_info(url, download=False)
+        info_dict = ydl.extract_info(url, download=True)
         if int(float(info_dict["duration"])) > 600:
-            is_downloading = False
+            is_downloading = True
             return []
         ydl.process_info(info_dict)
         audio_file = ydl.prepare_filename(info_dict)
