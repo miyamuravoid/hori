@@ -1,7 +1,7 @@
 import speedtest
-from Yumeko import DEV_USERS, dispatcher
-from Yumeko.modules.disable import DisableAbleCommandHandler
-from Yumeko.modules.helper_funcs.chat_status import dev_plus
+from SuzuneBot import DEV_USERS, dispatcher
+from SuzuneBot.modules.disable import DisableAbleCommandHandler
+from SuzuneBot.modules.helper_funcs.chat_status import dev_plus
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.ext import CallbackContext, CallbackQueryHandler, run_async
 
@@ -48,7 +48,7 @@ def speedtestxyz_callback(update: Update, context: CallbackContext):
             replymsg += f"\nDownload: `{convert(result['download'])}Mb/s`\nUpload: `{convert(result['upload'])}Mb/s`\nPing: `{result['ping']}`"
             update.effective_message.edit_text(replymsg, parse_mode=ParseMode.MARKDOWN)
     else:
-        query.answer("You are required to join Heroes Association to use this command.")
+        query.answer("You are required to join ©AuraXNetwork to use this command.")
 
 
 SPEED_TEST_HANDLER = DisableAbleCommandHandler("speedtest", speedtestxyz)
@@ -59,6 +59,6 @@ SPEED_TEST_CALLBACKHANDLER = CallbackQueryHandler(
 dispatcher.add_handler(SPEED_TEST_HANDLER)
 dispatcher.add_handler(SPEED_TEST_CALLBACKHANDLER)
 
-__mod_name__ = "sᴘᴇᴇᴅᴛᴇsᴛ"
+__mod_name__ = "SpeedTest"
 __command_list__ = ["speedtest"]
 __handlers__ = [SPEED_TEST_HANDLER, SPEED_TEST_CALLBACKHANDLER]
