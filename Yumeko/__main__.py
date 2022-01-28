@@ -72,24 +72,22 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-YUMEKO_IMG = "https://telegra.ph/file/e0040466048302df1a451.mp4"
+YUMEKO_IMG = "https://telegra.ph/file/74bdf31be780e12ac7733.mp4"
 
 PM_START_TEXT = """
-**Hey I am Yumeko** [ㅤ](https://telegra.ph/file/6643b0fb6792b2e5e844a.mp4)
-️➖➖➖➖➖➖➖➖➖➖➖➖➖
-**×I'm a Powerfull Group Manager Bot With Cool Modules. feel free to add me to your groups!**
-️➖➖➖➖➖➖➖➖➖➖➖➖➖
-☉ **×Click the button below for more.**
+ʜᴇʟʟᴏ ᴛʜᴇʀᴇ! ɪ ᴀᴍ ʜᴏʀɪ ꜱᴀɴ. ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇᴅ ʙᴏᴛ ᴛᴏ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴄʜᴀᴛꜱ! ᴇꜰꜰᴇᴄᴛɪᴠᴇʟʏ ᴀɴᴅ ᴇꜰꜰɪᴄɪᴇɴᴛʟʏ
+
+ᴘʀᴇꜱꜱ /help ᴛᴏ ꜱᴇᴇ ᴀʟʟ ᴍʏ ᴄᴏᴍᴍᴀnᴅ ʟɪꜱᴛ.
 """
 
 buttons = [
     [
-        InlineKeyboardButton(text="➕ Add Yumeko To Your group ➕", url="http://t.me/?startgroup=true"),
+        InlineKeyboardButton(text="🔹 Add Yumeko To Your group 🔹", url="http://t.me/horisan_robot/?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="About", callback_data="yumeko_"),
+        InlineKeyboardButton(text="About", callback_data="horisan_robot_"),
         InlineKeyboardButton(
-            text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/"
+            text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/+71XOhhxB731lMWM1"
         ),
     ],
     [
@@ -101,17 +99,17 @@ buttons = [
 
 
 HELP_STRINGS = """
-**Main commands:**  [ㅤ](https://telegra.ph/file/efdee100cc31b4b3e0be2.mp4)
-❂ /start: Starts me! You've probably already used this.
+**Main commands:**  [ㅤ](https://telegra.ph/file/940b63c7bdc98386fcc9d.mp4)
+❂ /start: Starts hori san.
 ❂ /help: Sends this message; I'll tell you more about myself.
 
 All commands can either be used with / or !.
-If you want to report any bugs or need any help with setting up Yumeko, reach us at here"""
+If you want to report any bugs or need any help with setting up hori san, reach us at here"""
 
 
 
 DONATE_STRING = """Hehe, baka!!
- [Is that so!!](https://t.me/Ryu_God) ❤️
+ [Is that so!!](https://t.me/voidxtoxic) ❤️
 """
 
 IMPORTED = {}
@@ -227,7 +225,7 @@ def start(update: Update, context: CallbackContext):
             ),
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/")]]
+                [[InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/+71XOhhxB731lMWM1")]]
             ),
         )
         
@@ -503,7 +501,7 @@ def yumeko_about_callback(update, context):
                  f"\nYou can add me to your group by clicking this link and selecting the chat.\n"
                  f"\nRead Admin Permissions and Anti-spam for basic info.\n"
                  f"\nRead Detailed Setup Guide to learn about setting up the bot in detail. (Recommended)\n"
-                 f"\nIf you do need help with further instructions feel free to ask in @lunaXresso.",
+                 f"\nIf you do need help with further instructions feel free to ask in @horimiya_family.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -578,7 +576,7 @@ def yumeko_about_callback(update, context):
 
     elif query.data == "yumeko_lic":
         query.message.edit_text(
-            text=f"Yumeko is a powerful bot for managing groups with additional features.\n"
+            text=f"hori san is a powerful bot for managing groups with additional features.\n"
               f"\nYumeko's Licensed Under The GNU (General Public License v3.0)\n"
               f"\nIf you have any question about Luna,"
               f"\nreach us at Support Chat.",
