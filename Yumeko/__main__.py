@@ -4,7 +4,7 @@ import re
 from sys import argv
 from typing import Optional
 
-from Yumeko import (
+from horisan import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -25,9 +25,9 @@ from Yumeko import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from Yumeko.modules import ALL_MODULES
-from Yumeko.modules.helper_funcs.chat_status import is_user_admin
-from Yumeko.modules.helper_funcs.misc import paginate_modules
+from horisan.modules import ALL_MODULES
+from horisan.modules.helper_funcs.chat_status import is_user_admin
+from horisan.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -72,22 +72,24 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-YUMEKO_IMG = "https://telegra.ph/file/74bdf31be780e12ac7733.mp4"
+YUMEKO_IMG = ""
 
 PM_START_TEXT = """
-ʜᴇʟʟᴏ ᴛʜᴇʀᴇ! ɪ ᴀᴍ ʜᴏʀɪ ꜱᴀɴ. ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇᴅ ʙᴏᴛ ᴛᴏ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴄʜᴀᴛꜱ! ᴇꜰꜰᴇᴄᴛɪᴠᴇʟʏ ᴀɴᴅ ᴇꜰꜰɪᴄɪᴇɴᴛʟʏ
+**▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+ʜᴇʟʟᴏ ᴛʜᴇʀᴇ! ɪ ᴀᴍ ʜᴏʀɪ ꜱᴀɴ. ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇᴅ ʙᴏᴛ ᴛᴏ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴄʜᴀᴛꜱ! ᴇꜰꜰᴇᴄᴛɪᴠᴇʟʏ ᴀɴᴅ ᴇꜰꜰɪᴄɪᴇɴᴛʟʏ!
 
 ᴘʀᴇꜱꜱ /help ᴛᴏ ꜱᴇᴇ ᴀʟʟ ᴍʏ ᴄᴏᴍᴍᴀnᴅ ʟɪꜱᴛ.
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬**
 """
 
 buttons = [
     [
-        InlineKeyboardButton(text="🔹 Add Yumeko To Your group 🔹", url="http://t.me/horisan_robot/?startgroup=true"),
+        InlineKeyboardButton(text=" Add Hori San To Your group ", url="http://t.me/?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="About", callback_data="horisan_robot_"),
+        InlineKeyboardButton(text="About", callback_data="horisan_"),
         InlineKeyboardButton(
-            text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/+71XOhhxB731lMWM1"
+            text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/horisanbotsupport"
         ),
     ],
     [
@@ -99,12 +101,12 @@ buttons = [
 
 
 HELP_STRINGS = """
-**Main commands:**  [ㅤ](https://telegra.ph/file/940b63c7bdc98386fcc9d.mp4)
-❂ /start: Starts hori san.
+**Main commands:**  [ㅤ](https://telegra.ph/file/dead26bc824dd8603dd49.jpg)
+❂ /start: Starts me! You've probably already used this.
 ❂ /help: Sends this message; I'll tell you more about myself.
 
 All commands can either be used with / or !.
-If you want to report any bugs or need any help with setting up hori san, reach us at here"""
+If you want to report any bugs or need any help with setting up Yumeko, reach us at here"""
 
 
 
@@ -123,7 +125,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("Yumeko.modules." + module_name)
+    imported_module = importlib.import_module("horisan.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -225,7 +227,7 @@ def start(update: Update, context: CallbackContext):
             ),
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/+71XOhhxB731lMWM1")]]
+                [[InlineKeyboardButton(text="Sᴜᴘᴘᴏʀᴛ", url="https://t.me/horisanbotsupport")]]
             ),
         )
         
@@ -371,17 +373,17 @@ def yumeko_about_callback(update, context):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Setup Guide", callback_data="yumeko_setup"
+                            text="Setup Guide", callback_data="horisan_setup"
                         ),
                         InlineKeyboardButton(
-                            text="T & C", callback_data="yumeko_tc"
+                            text="T & C", callback_data="horisan_tc"
                         ),
                     ],
-                    [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="yumeko_back")],
+                    [InlineKeyboardButton(text="ʙᴀᴄᴋ", callback_data="horisan_back")],
                 ]
             ),
         )
-    elif query.data == "yumeko_back":
+    elif query.data == "horisan_back":
         query.message.edit_text(
                 PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -390,7 +392,7 @@ def yumeko_about_callback(update, context):
                 disable_web_page_preview=False,
         )
 
-    elif query.data == "yumeko_basichelp":
+    elif query.data == "horisan_basichelp":
         query.message.edit_text(
             text=f"**──「 Basic Guide 」──**"
             f"\n\n1.) first, add me to your group.\n"
@@ -417,7 +419,7 @@ def yumeko_about_callback(update, context):
                 ]
             ),
         )
-    elif query.data == "yumeko_admin":
+    elif query.data == "horisan_admin":
         query.message.edit_text(
             text=f"**──「 Basic Guide 」──**"
             f"\n\n/play (song name) - play song from youtube"
@@ -434,7 +436,7 @@ def yumeko_about_callback(update, context):
             ),
         )
 
-    elif query.data == "yumeko_notes":
+    elif query.data == "horisan_notes":
         query.message.edit_text(
             text=f"──「 Advanced CMD 」──\n\n"
             f"/start (in group) - see the bot alive status"
@@ -444,10 +446,10 @@ def yumeko_about_callback(update, context):
             f"\n/id - show the group/user id & other",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="yumeko_basichelp")]]
+                [[InlineKeyboardButton(text="Back", callback_data="horisan_basichelp")]]
             ),
         )
-    elif query.data == "yumeko_support":
+    elif query.data == "horisan_support":
         query.message.edit_text(
             text=f"──「 Admin CMD 」──\n"
             f"\n/player - show the music playing status"
@@ -472,36 +474,36 @@ def yumeko_about_callback(update, context):
                 ]
             ),
         )
-    elif query.data == "yumeko_credit":
+    elif query.data == "horisan_credit":
         query.message.edit_text(
             text=f"<b> `Cʀᴇᴅɪᴛ Fᴏʀ Lᴜɴᴀ Dᴇᴠ's` </b>\n"
-            f"\nHᴇʀᴇ Sᴏᴍᴇ Dᴇᴠᴇʟᴏᴘᴇʀs Hᴇʟᴘɪɴɢ Iɴ Mᴀᴋɪɴɢ Tʜᴇ YUMEKO",
+            f"\nHᴇʀᴇ Sᴏᴍᴇ Dᴇᴠᴇʟᴏᴘᴇʀs Hᴇʟᴘɪɴɢ Iɴ Mᴀᴋɪɴɢ Tʜᴇ horisan",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="亗 ʀʏᴜ", url="https://t.me/Ryu_God"),
-                    InlineKeyboardButton(text="Tarun • [ᴀc͜͡ɢᴄ]", url="https://t.me/TheBlackLinen"),
+                    InlineKeyboardButton(text="VOID", url="https://t.me/voidxtoxic"),
+                    InlineKeyboardButton(text="MIYAMURA", url="https://t.me/miyamura_void"),
                  ],
                  [
-                    InlineKeyboardButton(text="Bot", url="https://t.me/"),
-                    InlineKeyboardButton(text="Support", url="https://t.me/"),
+                    InlineKeyboardButton(text="Bot", url="https://t.me/horisan_robot"),
+                    InlineKeyboardButton(text="Support", url="https://t.me/horisanbotsupport"),
                  ],
                  [
-                    InlineKeyboardButton(text="Back", callback_data="yumeko_basichelp"),
+                    InlineKeyboardButton(text="Back", callback_data="horisan_basichelp"),
                  
                  ]
                 ]
             ),
         )
 
-    elif query.data == "yumeko_setup":
+    elif query.data == "horisan_setup":
         query.message.edit_text(
             text=f"｢ Setup Guide 」\n"
                  f"\nYou can add me to your group by clicking this link and selecting the chat.\n"
                  f"\nRead Admin Permissions and Anti-spam for basic info.\n"
                  f"\nRead Detailed Setup Guide to learn about setting up the bot in detail. (Recommended)\n"
-                 f"\nIf you do need help with further instructions feel free to ask in @horimiya_family.",
+                 f"\nIf you do need help with further instructions feel free to ask in @lunaXresso.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -518,22 +520,22 @@ def yumeko_about_callback(update, context):
             ),
         )
 
-    elif query.data == "yumeko_del":
+    elif query.data == "horisan_del":
         query.message.edit_text(
             text=f"｢ Admin Permissions 」\n"
-                     f"\nTo avoid slowing down, Yumeko caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), Yumeko will only find out ~10 minutes later.\n"
-                    f"\nIf you want to update them immediately, you can use the /admincache or /reload command, that'll force Yumeko to check who the admins are again and their permissions\n"
+                     f"\nTo avoid slowing down, horisan caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), horisan will only find out ~10 minutes later.\n"
+                    f"\nIf you want to update them immediately, you can use the /admincache or /reload command, that'll force horisan to check who the admins are again and their permissions\n"
                     f"\nIf you are getting a message saying:\nYou must be this chat administrator to perform this action!\n"
-                    f"\nThis has nothing to do with Yumeko's rights; this is all about YOUR permissions as an admin. Yumeko respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with Yumeko. Similarly, to change Yumeko settings, you need to have the Change group info permission.\n"
-                    f"\nThe message very clearly states that you need these rights - not Yumeko.",
+                    f"\nThis has nothing to do with horisan's rights; this is all about YOUR permissions as an admin. horisan respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with horisan. Similarly, to change horisan settings, you need to have the Change group info permission.\n"
+                    f"\nThe message very clearly states that you need these rights - not horisan.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="yumeko_setup")]]
+                [[InlineKeyboardButton(text="Back", callback_data="horisan_setup")]]
             ),
         )
 
-    elif query.data == "yumeko_luv":
+    elif query.data == "horisan_luv":
         query.message.edit_text(
             text=f"｢ Anti-Spam Settings 」\n"
                      f"\nAntispam: "
@@ -547,11 +549,11 @@ def yumeko_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Back", callback_data="yumeko_setup")]]
+                [[InlineKeyboardButton(text="Back", callback_data="horisan_setup")]]
             ),
         )
 
-    elif query.data == "yumeko_lub":
+    elif query.data == "horisan_lub":
         query.message.edit_text(
             text=f" ｢ Terms and Conditions 」\n"
                 f"\nTo use this bot, You need to agree with Terms and Conditions.\n"
@@ -567,16 +569,16 @@ def yumeko_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                     InlineKeyboardButton(text="Credits", callback_data="yumeko_lic"),
-                     InlineKeyboardButton(text="Back", callback_data="help_back"),
+                     InlineKeyboardButton(text="Credits", callback_data="horisan_lic"),
+                     InlineKeyboardButton(text="Back", callback_data="horisan_back"),
                   ]
                 ]
             ),
         )
 
-    elif query.data == "yumeko_lic":
+    elif query.data == "_lic":
         query.message.edit_text(
-            text=f"hori san is a powerful bot for managing groups with additional features.\n"
+            text=f"horisan is a powerful bot for managing groups with additional features.\n"
               f"\nYumeko's Licensed Under The GNU (General Public License v3.0)\n"
               f"\nIf you have any question about Luna,"
               f"\nreach us at Support Chat.",
@@ -945,7 +947,7 @@ def main():
             updater.bot.set_webhook(url=URL + TOKEN)
 
     else:
-        LOGGER.info("Yumeko is deployed successfully.")
+        LOGGER.info("horisan is deployed successfully.")
         updater.start_polling(timeout=15, read_latency=4, clean=True)
 
     if len(argv) not in (1, 3, 4):

@@ -1,5 +1,5 @@
 from envparse import env
-from Yumeko import LOGGER
+from horisan import LOGGER
 
 DEFAULTS = {
     "LOAD_MODULES": True,

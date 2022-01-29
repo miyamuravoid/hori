@@ -1,6 +1,6 @@
 from telethon import events
 
-from Yumeko import telethn
+from horisan import telethn
 
 
 def register(**args):
