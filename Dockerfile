@@ -62,13 +62,13 @@ RUN apt update && apt upgrade -y && \
 RUN apt-get install -y ffmpeg python3-pip curl
 RUN pip3 install --upgrade pip setuptools
 
-RUN mkdir /Yumeko/
-COPY . /Yumeko
-WORKDIR /Yumeko
+RUN mkdir /horisan/
+COPY . /horisan
+WORKDIR /horisan
 
 ENV PATH="/home/bot/bin:$PATH"
 
 RUN pip3 install -U -r requirements.txt
 
 # Starting Worker
-CMD ["python3","-m","Yumeko"]
+CMD ["python3","-m","horisan"]

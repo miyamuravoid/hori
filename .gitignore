@@ -1,7 +1,7 @@
-Yumeko/config.py
-Yumeko/*.session
-Yumeko/*.session-journal
-Yumeko/config.ini
+horisan/config.py
+horisan/*.session
+horisan/*.session-journal
+horisan/config.ini
 log.txt
 *.pyc
 .idea/
@@ -9,8 +9,8 @@ log.txt
 .pydevproject
 .directory
 .vscode
-Yumeko/modules/helper_funcs/temp.txt
-Yumeko/elevated_users.json
+horisan/modules/helper_funcs/temp.txt
+horisan/elevated_users.json
 start-3.9.bat
 *.session
 kangsticker.png
